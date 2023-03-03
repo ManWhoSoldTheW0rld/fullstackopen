@@ -4,7 +4,26 @@ const Button = ({handleClick, text}) => <button onClick={handleClick}>{text}</bu
 
 const Header = ({text}) => <h2>{text}</h2>
 
-const StatisticLine = ({counter, text, sign}) => <p>{text} {counter}{sign}</p>
+const StatisticLine = ({counter, text, sign}) => <tr><td>{text}</td><td>{counter}{sign}</td></tr>
+
+const Statistics = ({good, bad, neutral, total, average, positive}) => {
+  if (total === 0) {
+    return <p>No feedback given</p>
+  } else {
+    return (
+      <table>
+        <tbody>
+          <StatisticLine counter={good} sign="" text="good"/>
+          <StatisticLine counter={neutral} text="neutral"/>
+          <StatisticLine counter={bad} sign="" text="bad"/>
+          <StatisticLine counter={total} sign="" text="all"/>
+          <StatisticLine counter={average} sign="" text="average"/>
+          <StatisticLine counter={positive} sign="%" text="positive"/>
+        </tbody>
+      </table>
+    )
+  }
+}
 
 
 const App = () => {
@@ -64,12 +83,7 @@ const App = () => {
       <Button handleClick={increaseNeutral} text="neutral"/>
       <Button handleClick={increaseBad} text="bad"/>
       <Header text ="statistics"/>
-      <StatisticLine counter={good} sign="" text="good"/>
-      <StatisticLine counter={neutral} text="neutral"/>
-      <StatisticLine counter={bad} sign="" text="bad"/>
-      <StatisticLine counter={total} sign="" text="all"/>
-      <StatisticLine counter={average} sign="" text="average"/>
-      <StatisticLine counter={positive} sign="%" text="positive"/>
+      <Statistics good={good} neutral={neutral} bad={bad} total={total} average={average} positive={positive}/>
     </div>
   )
 }
