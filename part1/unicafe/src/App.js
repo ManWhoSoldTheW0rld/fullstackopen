@@ -36,30 +36,30 @@ const App = () => {
   const [positive, setPositive] = useState(0)
 
   const increaseGood = () => {
-    const updatedConter = good + 1
+    const updatedCounter = good + 1
     const updatedTotal = total + 1
-    setGood(updatedConter)
+    setGood(updatedCounter)
     setTotal(updatedTotal)
-    updatePositive(updatedConter, updatedTotal)
-    updateAverage(updatedConter, bad, updatedTotal)
+    updatePositive(updatedCounter, updatedTotal)
+    updateAverage(updatedCounter, bad, updatedTotal)
   }
 
   const increaseNeutral = () => {
-    const updatedConter = neutral + 1
+    const updatedCounter = neutral + 1
     const updatedTotal = total + 1
-    setNeutral(updatedConter)
+    setNeutral(updatedCounter)
     setTotal(updatedTotal)
     updatePositive(good, updatedTotal)
     updateAverage(good, bad, updatedTotal)
   }
 
   const increaseBad = () => {
-    const updatedConter = bad + 1
+    const updatedCounter = bad + 1
     const updatedTotal = total + 1
-    setBad(updatedConter)
+    setBad(updatedCounter)
     setTotal(updatedTotal)
     updatePositive(good, updatedTotal)
-    updateAverage(good, updatedConter, updatedTotal)
+    updateAverage(good, updatedCounter, updatedTotal)
   }
 
   const updateAverage = (good, bad, total) => {
